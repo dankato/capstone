@@ -56,7 +56,7 @@ app.get('/api/post', (req, res) => {
 // });
 
 // Post new post
-app.post('/post', (req, res) => {
+app.post('/api/post', (req, res) => {
   console.log(req.body.text)
   Post
     .create({
@@ -82,7 +82,7 @@ app.post('/post', (req, res) => {
 });
 
 // Edit post by ID
-app.put('/post/:id', (req, res) => {
+app.put('/api/post/:id', (req, res) => {
   const requiredFields = ['text'];
   for (let i=0; i<requiredFields.length; i++) {
     const post = requiredFields[i];
@@ -116,7 +116,7 @@ app.put('/post/:id', (req, res) => {
 });
 
 // Delete post by ID
-app.delete('/post/:id', (req, res) => {
+app.delete('/api/post/:id', (req, res) => {
   console.log('app.delete\'s id', req.params.id);
   Post
     .findByIdAndRemove(req.params.id)
