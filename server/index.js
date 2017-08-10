@@ -120,7 +120,20 @@ app.delete('/api/post/:id', (req, res) => {
   console.log('app.delete\'s id', req.params.id);
   Post
     .findByIdAndRemove(req.params.id)
-    .then(post => res.status(204).end())
+    // .then(post => res.status(204).end())
+    .then(post => {
+      console.log('Post: ', post.apiRepr());
+      Post  
+        .find()
+        .exec()
+        .then(posts => {
+          res.status(200).json(posts);
+        })
+        .catch(err => {
+          console.log('Get failed!');
+          res.status(500).json({message: 'Internal error from GET'});
+        });
+    })
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
