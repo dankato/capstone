@@ -3,12 +3,14 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-
+const path = require('path');
 const  Post = require('./models');
 const { DATABASE_URL, PORT } = require('./config');
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(express.static('public'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -19,7 +21,7 @@ app.use(function(req, res, next) {
 
 mongoose.Promise = global.Promise;
 
-const path = require('path');
+
 
 // app.get('*', function (request, response){
 //   response.sendFile(path.resolve(__dirname, 'public', 'index.html'));
@@ -122,9 +124,23 @@ app.delete('/post/:id', (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+
+// Serve the built client
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+
+// Unhandled requests which aren't for the API should serve index.html so
+// client-side routing using browserHistory can function
+app.get(/^(?!\/api(\/|$))/, (req, res) => {
+  const index = path.resolve(__dirname, '../client/build', 'index.html');
+  res.sendFile(index);
+});
+
+
 let server;
 
-function runServer(databaseUrl, port=PORT) {
+function runServer(databaseUrl, port = PORT) {
+  console.log(PORT, 'port')
   return new Promise((resolve, reject) => {
     mongoose.connect(DATABASE_URL, err => {
       if (err) {
@@ -157,7 +173,7 @@ function closeServer() {
 }
 
 if (require.main === module) {
-  runServer().catch(err => console.error(err));
+  runServer(DATABASE_URL).catch(err => console.error(err));
 }
 
 module.exports = { runServer, closeServer, app };
