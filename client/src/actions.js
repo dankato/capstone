@@ -119,7 +119,7 @@ export const deletePost = (id) => dispatch => {
     },    
     }
     dispatch(deletePostRequest());
-    fetch('/api/post/${id}', opts)
+    fetch('/api/post/' + id, opts)
         .then((posts) => {
             console.log('posts', posts);
 
