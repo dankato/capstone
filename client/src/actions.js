@@ -62,7 +62,7 @@ export const deletePostError = text => ({
 
 export const getPosts = () => dispatch => {
     dispatch(getPostsRequest());
-    fetch('/')
+    fetch('/api/post')
         .then(res => {
             
             if (!res.ok) {
