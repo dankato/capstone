@@ -62,7 +62,7 @@ export const deletePostError = text => ({
 
 export const getPosts = () => dispatch => {
     dispatch(getPostsRequest());
-    fetch(`${REACT_APP_API_BASE_URL}`)
+    fetch('/')
         .then(res => {
             
             if (!res.ok) {
@@ -92,7 +92,7 @@ export const addPost = (data) => dispatch => {
     },
     }
     dispatch(addPostRequest());
-    fetch(`${REACT_APP_API_BASE_URL}/post`, opts)
+    fetch('/post', opts)
         .then(res => {
             // if(!res.ok) {
             //     return Promise.reject(res.statusText)
@@ -120,7 +120,7 @@ export const deletePost = (id) => dispatch => {
     },    
     }
     dispatch(deletePostRequest());
-    fetch(`${REACT_APP_API_BASE_URL}/post/${id}`, opts)
+    fetch('/post/${id}', opts)
         .then((posts) => {
             console.log('posts', posts);
 
