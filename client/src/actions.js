@@ -71,7 +71,7 @@ export const getPosts = () => dispatch => {
             return res.json()
         })
         .then((posts) => {
-            console.log('hey im here')
+            // console.log('hey im here')
             //console.log(text);
             dispatch(getPostsSuccess(posts))
         })
@@ -122,8 +122,7 @@ export const deletePost = (id) => dispatch => {
     fetch('/api/post/' + id, opts)
         .then((posts) => {
             console.log('posts', posts);
-
-            dispatch(deletePostSuccess(posts))
+            dispatch(getPostsSuccess(posts))
         })
         .catch((err) => {
             console.log(err)
