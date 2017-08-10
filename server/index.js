@@ -27,7 +27,7 @@ const path = require('path');
 
 
 // GET all
-app.get('/', (req, res) => {
+app.get('/api/post', (req, res) => {
   Post  
     .find()
     .exec()
