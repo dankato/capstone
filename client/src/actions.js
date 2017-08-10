@@ -91,7 +91,7 @@ export const addPost = (data) => dispatch => {
     },
     }
     dispatch(addPostRequest());
-    fetch('/post', opts)
+    fetch('/api/post', opts)
         .then(res => {
             // if(!res.ok) {
             //     return Promise.reject(res.statusText)
@@ -119,7 +119,7 @@ export const deletePost = (id) => dispatch => {
     },    
     }
     dispatch(deletePostRequest());
-    fetch('/post/${id}', opts)
+    fetch('/api/post/${id}', opts)
         .then((posts) => {
             console.log('posts', posts);
 
