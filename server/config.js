@@ -2,12 +2,12 @@
 
 require('dotenv').config();
 
-exports.DATABASE_URL = process.env.DATABASE_URL ||
-                       global.DATABASE_URL ||
-                      'mongodb://localhost/capstone';
-     // console.log(exports.DATABASE_URL);
-exports.TEST_DATABASE_URL = (
-  process.env.TEST_DATABASE_URL ||
- 'mongodb://localhost/test');
- console.log(exports.DATABASE_URL, 'database url');
+const dbUrl = {
+  production: process.env.DATABASE_URL,
+  development: 'mongodb://localhost/capstone',
+  test: 'mongodb://localhost/capstone/test'
+};
+
+exports.DATABASE_URL = dbUrl[process.env.NODE_ENV];
+exports.TEST_DATABASE_URL = dbUrl.test;
 exports.PORT = process.env.PORT || 3001;

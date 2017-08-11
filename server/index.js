@@ -160,8 +160,10 @@ function runServer(databaseUrl, port = PORT) {
       if (err) {
         return reject(err);
       }
+      console.log(`MONGODB run with: ${DATABASE_URL}`)
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port}`);
+        console.log(`On environement: ${process.env.NODE_ENV}`)
         resolve();
       })
       .on('error', err => {

@@ -24,11 +24,17 @@ export const reducer = (state=initialState, action) => {
            loading: false,
            error: action.err
         })
-    } else if (action.type === action.DELETE_POST_ERROR) {
-        return Object.assign({}, state, {
-           loading: false,
-           error: action.err
-        })
+    } else if (action.type === actions.DELETE_POSTS_SUCCESS) {
+        console.log('hello world')
+        // return Object.assign({}, state, {
+        //    loading: false,
+        //    text: state.text.filter(t => t._id !== action.id)
+        // })
+        return {
+            ...state,
+            loading: false,
+            text: state.text.filter(t => t._id !== action.id)
+        }
     }
     return state;
 }

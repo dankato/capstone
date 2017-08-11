@@ -7,6 +7,20 @@
 // | REMOVE_REPLY| Removes a single reply to the database             |
 // | ADD_REPLY   | Adds a single reply to the database                |
 
+const localUrl = 'http://localhost:3001';
+const herokuUrl = '';
+
+let baseUrl;
+
+console.log(process.env.NODE_ENV)
+
+if (process.env.NODE_ENV === 'development') {
+    baseUrl = localUrl
+} else {
+    baseUrl = herokuUrl;
+}
+
+
 export const GET_POSTS_REQUEST = 'GET_POSTS_REQUEST';
 export const getPostsRequest = text => ({
     type: GET_POSTS_REQUEST,
@@ -45,9 +59,9 @@ export const deletePostRequest = text => ({
 })
 
 export const DELETE_POSTS_SUCCESS = 'DELETE_POSTS_SUCCESS';
-export const deletePostSuccess = posts => ({
+export const deletePostSuccess = id => ({
     type: DELETE_POSTS_SUCCESS,
-    posts
+    id
 })
 
 export const DELETE_POSTS_ERROR = 'DELETE_POSTS_ERROR';
@@ -61,7 +75,7 @@ export const deletePostError = text => ({
 
 export const getPosts = () => dispatch => {
     dispatch(getPostsRequest());
-    fetch('/api/post')
+    fetch(`${baseUrl}/api/post`)
         .then(res => {
             
             if (!res.ok) {
@@ -91,7 +105,7 @@ export const addPost = (data) => dispatch => {
     },
     }
     dispatch(addPostRequest());
-    fetch('/api/post', opts)
+    fetch(`${baseUrl}/api/post`, opts)
         .then(res => {
             // if(!res.ok) {
             //     return Promise.reject(res.statusText)
@@ -119,11 +133,8 @@ export const deletePost = (id) => dispatch => {
     },    
     }
     dispatch(deletePostRequest());
-    fetch('/api/post/' + id, opts)
-        .then((posts) => {
-            console.log('posts', posts);
-            dispatch(getPostsSuccess(posts))
-        })
+    fetch(`${baseUrl}/api/post/${id}`, opts)
+        .then(() => dispatch(deletePostSuccess(id)))
         .catch((err) => {
             console.log(err)
             dispatch(deletePostError(err))
