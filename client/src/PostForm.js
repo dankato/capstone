@@ -23,7 +23,7 @@ export class PostForm extends React.Component{
             <div className='addOption'>
                 Have anonymous feedback to share?
                 <form onSubmit={e => this.onSubmit(e)} >
-                    <input type="text" placeholder="enter text here" 
+                    <input type="text" placeholder="enter feedback here" 
                         ref={input => this.x = input} required/>
                     <button type="submit">Tell us!</button>
                 </form>

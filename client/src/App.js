@@ -10,6 +10,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <PostPage />
+        <footer className="footer" data-stellar-ratio="2">
+          </footer>
       </div>
     );
   }

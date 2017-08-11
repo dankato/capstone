@@ -1,12 +1,33 @@
+body {
+  background-color: #f9fbff;
+  color:#303540;
+  min-height: 800px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 25px;
+}
 .App {
   text-align: center;
 }
 
-.App-header {
-  background-color: pink;
-  height: 20px;
-  padding: 50px;
+footer {
+  background-color:#f9fbff;
+  height: 100px;
+  /* top: 400px;
+  bottom: 0; */
+  width: auto;
+  padding-left: -10px;
+  padding-right: -10px;
+  /* top: 50px; */
+  /* padding: 50px; */
   color: teal;
+  background-attachment: fixed;
+  background-image: url(https://tf-assets-prod.s3.amazonaws.com/avatars/TheresaFreet.png);
+  background-size: 400px;
+  background-position-y: 150%;
+  background-position-x: 50%;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+  display: block;
 }
 
 .addOption {
@@ -19,18 +40,40 @@ form {
 
 input {
   width: 23%;
+  font-size: 20px;
 }
 
 button {
   background-color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  border: 2px ridge #a9b4cb;
+  margin: 3px;
 }
 
 .button {
-  height: 30px;
-  margin: 3px;
+  height: 40px;
+  border-radius: 5px;
 }
 
 span {
   max-width: 90%;
   display: inline-block;
+}
+
+.singlePost {
+  background-color: #d8dce5;
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.App-header {
+  border-bottom: 1px solid #9ba4b4;
+  font-family: 'Raleway', sans-serif;
 }

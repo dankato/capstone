@@ -29,9 +29,9 @@ export class PostList extends React.Component {
    
     let post = this.props.text.map((t) => {
     return (
-      <div key={t._id}>
+      <div className="singlePost" key={t._id}>
        
-        <span>{t.text}</span>
+        <p>{t.text}</p>
         <span className="comment">
         <button className="vote button" 
         ref={input => this.x = input}
