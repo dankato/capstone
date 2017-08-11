@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
   text: {type: String},
+  count: {type: Number},
   created: {type: Date, default: Date.now}
 });
 
@@ -11,6 +12,7 @@ postSchema.methods.apiRepr = function() {
   return {
     id: this._id,
     text: this.text,
+    count: this.count,
     created: this.created
   };
 };

@@ -35,6 +35,10 @@ export const reducer = (state=initialState, action) => {
             loading: false,
             text: state.text.filter(t => t._id !== action.id)
         }
+    } else if (action.type === actions.INCREMENT) {
+        return Object.assign({}, state, {
+            count: state.count + action.count
+        })
     }
     return state;
 }

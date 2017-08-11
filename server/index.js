@@ -60,7 +60,8 @@ app.post('/api/post', (req, res) => {
   console.log(req.body.text)
   Post
     .create({
-      text: req.body.text
+      text: req.body.text,
+      count: 0
     })
     .then(post => {
       console.log('Post: ', post.apiRepr());

@@ -15,8 +15,11 @@ export class PostList extends React.Component {
     this.props.dispatch(actions.deletePost(id))
   } 
 
-  voteCounter() {
-    console.log('ready for some votin');
+  voteCounter(note) {
+    console.log(typeof(this.x.value));
+    console.log(note);
+    this.x.value = 0;
+    this.props.dispatch(actions.increment(parseInt(this.x.value, 10)));
   }
 
  render() {
@@ -27,10 +30,12 @@ export class PostList extends React.Component {
     return (
       <div key={t._id}>
         <p>{t.text}</p>
-        <button className="vote" onClick={e => this.voteCounter()} style={style.button}>
-          6{emoji.get('thumbsup')}
+        <button className="vote" 
+        ref={input => this.x = input}
+        onClick={() => this.voteCounter(t)} style={style.button}>
+        {this.props.count}{emoji.get('thumbsup')}
         </button>
-        <button className="reply">Show Replies</button>
+        {/* <button className="reply">Show Replies</button> */}
         <button className="delete" onClick={(e) => this.onDelete(t._id)}>Delete</button>
         <ReplyBox />
       </div>
@@ -46,7 +51,8 @@ export class PostList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  text: state.text
+  text: state.text,
+  count: state.count
 })
 
 export default connect(mapStateToProps)(PostList);

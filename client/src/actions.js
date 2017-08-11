@@ -70,8 +70,13 @@ export const deletePostError = text => ({
     text
 })
 
+export const INCREMENT = 'INCREMENT';
+export const increment = count => ({
+    type: INCREMENT,
+    count
+})
 
-
+const action = increment(1);
 
 export const getPosts = () => dispatch => {
     dispatch(getPostsRequest());
