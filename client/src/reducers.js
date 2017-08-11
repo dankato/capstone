@@ -39,7 +39,7 @@ export const reducer = (state=initialState, action) => {
         return Object.assign({}, state, {
             count: state.count + action.count
         })
-    }
+    } 
     return state;
 }
 

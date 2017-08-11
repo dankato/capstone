@@ -70,25 +70,26 @@ export const deletePostError = text => ({
     text
 })
 
-export const INCREMENT = 'INCREMENT';
-export const increment = count => ({
-    type: INCREMENT,
+export const GET_COUNT_REQUEST = 'GET_COUNT_REQUEST';
+export const getCountRequest = count => ({
+    type: GET_COUNT_REQUEST,
     count
 })
 
-const action = increment(1);
-
-export const INCREMENT_REQUEST = 'INCREMENT_REQUEST';
-export const incrementRequest = count => ({
-    type: INCREMENT_REQUEST,
+export const GET_COUNT_SUCCESS = 'GET_COUNT_SUCCESS';
+export const getCountSuccess = count => ({
+    type: GET_COUNT_SUCCESS,
     count
 })
 
-export const INCREMENT_ERROR = 'INCREMENT_ERROR';
-export const incrementError = count => ({
-    type: INCREMENT_ERROR,
+export const GET_COUNT_ERROR = 'GET_COUNT_ERROR';
+export const getCountError = count => ({
+    type: GET_COUNT_ERROR,
     count
 })
+
+
+
 
 export const getPosts = () => dispatch => {
     dispatch(getPostsRequest());
@@ -158,7 +159,7 @@ export const deletePost = (id) => dispatch => {
         })
 }
 
-export const voteCount = (id, data) => dispatch => {
+export const voteCount = (id) => dispatch => {
     const opts = {
         method: "PUT",
         body: JSON.stringify(data),
@@ -167,21 +168,40 @@ export const voteCount = (id, data) => dispatch => {
         'Content-Type': 'application/json'
     },
 }
-    dispatch(incrementRequest());
-    fetch(`${baseUrl}/api/vote/${id}`, opts)
+    dispatch(getCountRequest());
+    fetch(`${baseUrl}/api/vote/${id}`)
         .then(res => {
-            console.log('in vote fetch');
             if(!res.ok) {
                 return Promise.reject(res.statusText)
             }
-            console.log(res.json);
             return res.json()
         })
-        .then(posts => {
-            console.log('posts: ', posts)
-            dispatch(getPostsSuccess(posts))
+        .then(count => {
+            dispatch(getCountSuccess(count))
         })  
         .catch(err => {
-            dispatch(incrementError(err))
+            dispatch(getCountError(err))
         })  
 }
+
+
+// export const getPosts = () => dispatch => {
+//     dispatch(getPostsRequest());
+//     fetch(`${baseUrl}/api/post`)
+//         .then(res => {
+            
+//             if (!res.ok) {
+//                 return Promise.reject(res.statusText)
+//             }
+//             //(res.json())
+//             return res.json()
+//         })
+//         .then((posts) => {
+//             // console.log('hey im here')
+//             //console.log(text);
+//             dispatch(getPostsSuccess(posts))
+//         })
+//         .catch((err) => {
+//             dispatch(getPostsError(err))
+//         })
+// }

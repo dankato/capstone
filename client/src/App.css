@@ -9,3 +9,28 @@
   color: teal;
 }
 
+.addOption {
+  padding: 15px;
+}
+
+form {
+  padding-top: 10px;
+}
+
+input {
+  width: 23%;
+}
+
+button {
+  background-color: white;
+}
+
+.button {
+  height: 30px;
+  margin: 3px;
+}
+
+span {
+  max-width: 90%;
+  display: inline-block;
+}

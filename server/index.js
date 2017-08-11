@@ -82,6 +82,33 @@ app.post('/api/post', (req, res) => {
     });
 });
 
+//Increment vote counter
+app.put('/api/vote/:id', (req, res) => {
+  console.log('in the put yall');
+  console.log('req.params from vote', req.params)
+  // const post = Post.findOne({_id: req.body.id});
+  //const count = post.count
+  //console.log('COUNT>>>>>', count);
+  Post
+  .findByIdAndUpdate({_id: req.params.id}, {$inc: {count: 1}})
+  .then(count =>   
+    Post
+      .find()
+      .exec()
+      .then(posts => {
+        res.status(200).json(posts);
+      })
+      .catch(err => {
+        console.log('Get failed!');
+        res.status(500).json({message: 'Internal error from GET'});
+      })
+    )
+  .catch(err => {
+    console.log('you failed the put vote');
+    res.status(500).json({ message: 'Internal error from PUT' });    
+  })
+});
+
 // Edit post by ID
 app.put('/api/post/:id', (req, res) => {
   const requiredFields = ['text'];

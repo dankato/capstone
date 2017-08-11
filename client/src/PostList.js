@@ -16,10 +16,11 @@ export class PostList extends React.Component {
   } 
 
   voteCounter(note) {
-    console.log(typeof(this.x.value));
-    console.log(note);
-    this.x.value = 0;
-    this.props.dispatch(actions.increment(parseInt(this.x.value, 10)));
+    console.log(typeof(note.count));
+    // console.log(note.count);
+    // this.x.value = 0;
+   // this.props.dispatch(actions.increment(parseInt(this.x.value, 10)));
+   this.props.dispatch(actions.voteCount(note._id));
   }
 
  render() {
@@ -29,14 +30,17 @@ export class PostList extends React.Component {
     let post = this.props.text.map((t) => {
     return (
       <div key={t._id}>
-        <p>{t.text}</p>
-        <button className="vote" 
+       
+        <span>{t.text}</span>
+        <span className="comment">
+        <button className="vote button" 
         ref={input => this.x = input}
         onClick={() => this.voteCounter(t)} style={style.button}>
-        {this.props.count}{emoji.get('thumbsup')}
+        {t.count}{emoji.get('thumbsup')}
         </button>
         {/* <button className="reply">Show Replies</button> */}
-        <button className="delete" onClick={(e) => this.onDelete(t._id)}>Delete</button>
+        <button className="delete button" onClick={(e) => this.onDelete(t._id)}>Delete</button>
+        </span>
         <ReplyBox />
       </div>
     )

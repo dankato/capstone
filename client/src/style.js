@@ -7,6 +7,9 @@ const style = {
     vote: {
         backgroundColor: '#F5F5F5',
         fontSize: '90px',
+    },
+    addOption: {
+        backgroundColor: '#CCFFC1'
     }
 }
 // const style = {
