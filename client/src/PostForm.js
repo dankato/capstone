@@ -9,6 +9,8 @@ export class PostForm extends React.Component{
         let value = this.x.value;
         this.props.dispatch(actions.addPost({text: value}));
         this.x.value = '';
+        alert('thanks, i will use it against you in the court of law')
+        
     }
 
     // onClick(event) {
