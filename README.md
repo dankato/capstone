@@ -1,11 +1,11 @@
-# React Capstone
+# Feedback Framework
 ![Project Image](https://i.giphy.com/ah7KwjMNJlhtK.gif)
 
 ### TL;TR
-A responsive client-side React-Redux based [MotivateMe!](https://media3.giphy.com/media/xUA7baCMQfFkvG5BdK/giphy.gif)
+A responsive client-side React-Redux based [Feedback Framework!](https://media3.giphy.com/media/xUA7baCMQfFkvG5BdK/giphy.gif)
 
 ## Description
-- Welcome To MotivateMe! Your center for positive feedback, constructive criticism, and everything you need to turn your team into a well-oiled machine. Anonymously record compliments, nice surprises, and habits you want your team to continue. Start collaborating!
+- Welcome To Feedback Framework! Your center for positive feedback, constructive criticism, and everything you need to turn your team into a well-oiled machine. Anonymously record compliments, nice surprises, and habits you want your team to continue. Start collaborating!
 - Peers can submit anonymous feedback to other peers.
 - Other users can then read feedback in a general forum.
 - Each feedback message can be commented on
