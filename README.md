@@ -1,7 +1,7 @@
 # React Capstone
 ![Project Image](https://i.giphy.com/ah7KwjMNJlhtK.gif)
 
-### TLTR
+### TL;TR
 A responsive client-side React-Redux based [MotivateMe!](https://media3.giphy.com/media/xUA7baCMQfFkvG5BdK/giphy.gif)
 
 ## Description
@@ -30,9 +30,6 @@ _A user should be able to:_
 - Edit existing posts in database
 - Comment on existing posts in the database
 - Delete existing posts in database (admin only)
-
-### Wireframe
-[google drive](https://goo.gl/6zfcFG))
 
 ### What are we using?
 * React
